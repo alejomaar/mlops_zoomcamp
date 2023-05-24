@@ -52,7 +52,7 @@ Teach practical aspects of productionizing ML services — from training and exp
 
 [More details](01-intro)
 
-### [Module 2: Experiment tracking and model management](02-experiment-tracking)
+### [Module 2: Experiment tracking and model management] in progress
 
 * Experiment tracking intro
 * Getting started with MLflow
@@ -62,10 +62,10 @@ Teach practical aspects of productionizing ML services — from training and exp
 * MLflow in practice
 * Homework
 
-[More details](02-experiment-tracking)
+[More details] in progress
 
 
-### [Module 3: Orchestration and ML Pipelines](03-orchestration)
+### [Module 3: Orchestration and ML Pipelines] in progress
 
 * Workflow orchestration
 * Prefect 2.0
@@ -73,10 +73,10 @@ Teach practical aspects of productionizing ML services — from training and exp
 * Deployment of Prefect flow
 * Homework
 
-[More details](03-orchestration)
+[More details] in progress
 
 
-### [Module 4: Model Deployment](04-deployment)
+### [Module 4: Model Deployment] in progress
 
 * Three ways of model deployment: Online (web and streaming) and offline (batch)
 * Web service: model deployment with Flask
@@ -84,19 +84,19 @@ Teach practical aspects of productionizing ML services — from training and exp
 * Batch: scoring data offline
 * Homework
 
-[More details](04-deployment)
+[More details] in progress
 
 
-### [Module 5: Model Monitoring](05-monitoring)
+### [Module 5: Model Monitoring] in progress
 
 * Monitoring ML-based services
 * Monitoring web services with Prometheus, Evidently, and Grafana
 * Monitoring batch jobs with Prefect, MongoDB, and Evidently
 
-[More details](05-monitoring)
+[More details] in progress
 
 
-### [Module 6: Best Practices](06-best-practices)
+### [Module 6: Best Practices] in progress
 
 * Testing: unit, integration
 * Python: linting and formatting
@@ -105,14 +105,14 @@ Teach practical aspects of productionizing ML services — from training and exp
 * Infrastructure as code (Terraform)
 * Homework
 
-[More details](06-best-practices)
+[More details] in progress
 
 
-### [Project](07-project/)
+### [Project] in progress
 
 * End-to-end project with all the things above
 
-[More details](07-project/)
+[More details] in progress
 
 
 
