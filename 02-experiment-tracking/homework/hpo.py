@@ -9,12 +9,18 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("random-forest-hyperopt")
+mlflow.set_experiment("random-forest")
 
 
 def load_pickle(filename):
     with open(filename, "rb") as f_in:
         return pickle.load(f_in)
+
+def mlflow_callback(study: optuna.Study, trial: optuna.Trial):
+    trial_value = trial.value if trial.value is not None else float("nan")
+    with mlflow.start_run(run_name=str(trial.number)):
+        mlflow.log_params(trial.params)
+        mlflow.log_metrics({"rmse": trial_value})
 
 
 @click.command()
@@ -33,7 +39,8 @@ def run_optimization(data_path: str, num_trials: int):
     X_train, y_train = load_pickle(os.path.join(data_path, "train.pkl"))
     X_val, y_val = load_pickle(os.path.join(data_path, "val.pkl"))
 
-    def objective(trial):
+    def objective(trial: optuna.Trial):
+        
         params = {
             'n_estimators': trial.suggest_int('n_estimators', 10, 50, 1),
             'max_depth': trial.suggest_int('max_depth', 1, 20, 1),
@@ -52,7 +59,7 @@ def run_optimization(data_path: str, num_trials: int):
 
     sampler = TPESampler(seed=42)
     study = optuna.create_study(direction="minimize", sampler=sampler)
-    study.optimize(objective, n_trials=num_trials)
+    study.optimize(objective, n_trials=num_trials,callbacks=[mlflow_callback])
 
 
 if __name__ == '__main__':

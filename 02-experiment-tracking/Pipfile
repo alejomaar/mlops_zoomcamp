@@ -10,6 +10,7 @@ pandas = "*"
 scikit-learn = "*"
 pyarrow = "*"
 mlflow = "*"
+optuna = "*"
 
 [dev-packages]
 
