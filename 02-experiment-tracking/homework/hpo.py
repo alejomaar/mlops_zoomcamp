@@ -8,8 +8,8 @@ from optuna.samplers import TPESampler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("RandomForest")
+mlflow.set_tracking_uri("http://127.0.0.1:4600")
+mlflow.set_experiment("Random-Forest-Hyperopt")
 
 
 def load_pickle(filename):
@@ -20,7 +20,7 @@ def mlflow_callback(study: optuna.Study, trial: optuna.Trial):
     trial_value = trial.value if trial.value is not None else float("nan")
     with mlflow.start_run(run_name=str(trial.number)):
         mlflow.log_params(trial.params)
-        mlflow.log_metrics({"rmse": trial_value})
+        mlflow.log_metric("rmse", trial_value)
 
 
 @click.command()
@@ -49,7 +49,7 @@ def run_optimization(data_path: str, num_trials: int):
             'random_state': 42,
             'n_jobs': -1
         }
-
+        
         rf = RandomForestRegressor(**params)
         rf.fit(X_train, y_train)
         y_pred = rf.predict(X_val)
